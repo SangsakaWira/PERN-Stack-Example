@@ -1,10 +1,14 @@
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 const pool = require("../config/db")
 
 exports.create = (req,res) =>{
-    res.status(201).send({
-        msg:"User Created!"
-    })
+    pool.query(`INSERT INTO users VALUES('${req.body.username}','${req.body.email}','${req.body.password}')`, (error, results) => {
+        if (error) {
+          throw error
+        }
+        res.status(201).json(results.rows)
+      })
 }
 
 exports.read = (req,res) =>{

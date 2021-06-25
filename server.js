@@ -11,7 +11,6 @@ app.use(cors())
 
 // routes
 const userRouter = require('./routes/user')
-const pool = require("./config/db")
 
 // app routes
 app.use("/user", userRouter)
