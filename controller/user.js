@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken")
-const user = require("../model/user")
 const pool = require("../config/db")
 
 exports.create = (req,res) =>{
