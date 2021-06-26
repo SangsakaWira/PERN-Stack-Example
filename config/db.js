@@ -9,9 +9,9 @@ const pool = new Pool({
 })
 
 pool.query(`CREATE TABLE IF NOT EXISTS users(
-    id Serial PRIMARY KEY,
-    username VARCHAR(255),
-    email VARCHAR(255),
+    id Serial NOT NULL UNIQUE PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255));`)
 
 module.exports = pool;

@@ -6,6 +6,7 @@ services:
            restart: always
            environment: 
             - DB_URL=postgres-db
+            - SECRET_KEY=a2n!h24no23n
            depends_on:
             - postgres-db
            ports:
@@ -19,5 +20,7 @@ services:
                - POSTGRES_USER=sangsakawira
                - POSTGRES_DB=perumahan
              image: postgres
+             ports:
+              - "8888:5432"
              volumes:
                - ./data:/data/db
