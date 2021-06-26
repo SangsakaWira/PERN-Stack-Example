@@ -3,7 +3,8 @@ const bcrypt = require("bcryptjs")
 const pool = require("../config/db")
 
 exports.create = (req,res) =>{
-    pool.query(`INSERT INTO users VALUES('${req.body.username}','${req.body.email}','${req.body.password}')`, (error, results) => {
+
+    pool.query(`INSERT INTO users (username,email,password) VALUES('${req.body.username}','${req.body.email}','${req.body.password}') RETURNING id, username, email`, (error, results) => {
         if (error) {
           throw error
         }

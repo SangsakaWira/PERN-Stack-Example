@@ -4,6 +4,8 @@ services:
            container_name: app-postgres
            build: .
            restart: always
+           environment: 
+            - DB_URL=postgres-db
            depends_on:
             - postgres-db
            ports:
@@ -13,12 +15,9 @@ services:
        postgres-db:
              container_name: postgres-db
              environment:
-               - POSTGRES_HOST_AUTH_METHOD=trust
-               - POSTGRES_PASSWORD=contohlagi
+               - POSTGRES_PASSWORD=contohpassword
                - POSTGRES_USER=sangsakawira
-               - APP_DB_NAME=perumahan
+               - POSTGRES_DB=perumahan
              image: postgres
              volumes:
                - ./data:/data/db
-             ports:
-               - '6666:5432'

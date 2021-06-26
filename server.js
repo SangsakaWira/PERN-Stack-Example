@@ -15,6 +15,10 @@ const userRouter = require('./routes/user')
 // app routes
 app.use("/user", userRouter)
 
+app.get("/",(req,res)=>{
+    res.send("Online")
+})
+
 app.listen(3000,()=>{
     console.log("Server is running!")
 })
